@@ -1,0 +1,23 @@
+name: smoke
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - run: python -m py_compile scripts/fede_scan.py scripts/fede_intake.py scripts/fede_feedback.py tests/test_fede_intake.py tests/test_fede_feedback.py
+      - run: python -m pytest tests -q
+      - run: node --check workers/feedback-relay.js
+      - run: node tests/feedback-relay-smoke.mjs
+      - run: python scripts/fede_intake.py --domain sales
+      - run: python scripts/fede_intake.py
