@@ -74,10 +74,27 @@ Generate a beginner plan without needing a repo:
 ```bash
 python3 scripts/fede_intake.py --text "I am a beginner and want to automate CRM, Slack, Notion, and emails"
 python3 scripts/fede_intake.py --domain ops --text "I need weekly updates and support replies"
+python3 scripts/fede_intake.py --domain support
+python3 scripts/fede_intake.py
 ```
 
 The CLI returns an ICE matrix, version plan, 60-minute session, 2-day basics
-plan, and first prompt.
+plan, first output template, and first prompt. Blank input returns a domain
+picker.
+
+Example output starts with:
+
+```text
+# Fede First Workflow Plan
+
+## Verdict
+
+Start with Discovery prep note.
+
+## First Build Task
+
+Paste one real deal context and generate a Notion-ready prep note draft.
+```
 
 ## Feedback
 
@@ -111,6 +128,9 @@ names in feedback.
 The relay implementation lives in `workers/feedback-relay.js`. It keeps the
 GitHub token server-side.
 
+For a public relay, configure `FEEDBACK_SHARED_SECRET` server-side and set
+`FEDE_FEEDBACK_SECRET` client-side.
+
 ## Public-Safe Launch Copy
 
 Launch copy lives in:
@@ -122,7 +142,7 @@ The public proof spine:
 
 ```text
 16 discovery calls reviewed, 9 strong ICP fits, 5 repeated blockers extracted,
-and a scanner-backed consult workflow created from those patterns.
+and an evidence-backed consult workflow created from those patterns.
 ```
 
 Do not publish interviewee names, company names, or direct quotes.
@@ -194,6 +214,7 @@ agents/openai.yaml
 scripts/fede_scan.py
 scripts/fede_intake.py
 scripts/fede_feedback.py
+tests/test_fede_intake.py
 templates/consult-note.md
 references/
 ```

@@ -15,6 +15,7 @@ import argparse
 import json
 import os
 from pathlib import Path
+import re
 import shutil
 import subprocess
 import sys
@@ -26,6 +27,11 @@ import urllib.request
 
 REPO = "floomhq/fede"
 MAX_FIELD_CHARS = 1000
+SECRET_PATTERNS = [
+    re.compile(r"(?i)(api[_-]?key|token|secret|password)\s*[:=]\s*['\"]?[^\s,'\"]+"),
+    re.compile(r"(?i)bearer\s+[a-z0-9._\-]{12,}"),
+    re.compile(r"[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}"),
+]
 
 
 def run(command: list[str]) -> subprocess.CompletedProcess[str]:
@@ -41,6 +47,8 @@ def gh_ready() -> bool:
 
 def clean(value: str) -> str:
     trimmed = value.strip()[:MAX_FIELD_CHARS]
+    for pattern in SECRET_PATTERNS:
+        trimmed = pattern.sub("[redacted]", trimmed)
     return trimmed or "not provided"
 
 
@@ -100,10 +108,14 @@ def issue_url(title: str, issue_body: str) -> str:
 
 def post_relay(url: str, event: dict[str, object]) -> str | None:
     data = json.dumps(event, sort_keys=True).encode("utf-8")
+    headers = {"content-type": "application/json", "user-agent": "fede-feedback/1"}
+    shared_secret = os.environ.get("FEDE_FEEDBACK_SECRET", "").strip()
+    if shared_secret:
+        headers["x-fede-feedback-secret"] = shared_secret
     request = urllib.request.Request(
         url,
         data=data,
-        headers={"content-type": "application/json", "user-agent": "fede-feedback/1"},
+        headers=headers,
         method="POST",
     )
     try:

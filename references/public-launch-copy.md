@@ -28,7 +28,7 @@ Proof spine:
 
 ```text
 16 discovery calls reviewed, 9 strong ICP fits, 5 repeated blockers extracted,
-and a scanner-backed consult workflow created from those patterns.
+and an evidence-backed consult workflow created from those patterns.
 ```
 
 ## LinkedIn Draft

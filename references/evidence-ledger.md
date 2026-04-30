@@ -26,7 +26,7 @@ Use this in launch materials when space permits:
 
 ```text
 Proof spine: 16 discovery calls reviewed, 9 strong ICP fits, 5 repeated blockers
-extracted, and a scanner-backed consult workflow created from those patterns.
+extracted, and an evidence-backed consult workflow created from those patterns.
 ```
 
 The 5 repeated blockers:

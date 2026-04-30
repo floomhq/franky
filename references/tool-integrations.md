@@ -24,10 +24,13 @@ plan:
 ```bash
 python3 scripts/fede_intake.py --text "I am a beginner and want to automate CRM, Slack, Notion, and emails"
 python3 scripts/fede_intake.py --domain ops --text "I need weekly updates and support replies"
+python3 scripts/fede_intake.py --domain support
+python3 scripts/fede_intake.py
 ```
 
 The output is a deterministic Markdown starter plan with ICE, versions, staging,
-a 60-minute session, a 2-day basics plan, and a first prompt.
+a 60-minute session, a 2-day basics plan, a first output template, and a first
+prompt. Blank input returns a domain picker.
 
 ## Feedback CLI
 
@@ -41,15 +44,17 @@ python3 scripts/fede_feedback.py \
   --context "Beginner with Gmail, CRM, Notion, Slack ideas"
 ```
 
-With `FEDE_AUTO_FEEDBACK_URL`, the script posts to the feedback relay. With
-GitHub CLI auth, it creates an issue in `floomhq/fede`. Without either path, it
-stores `.fede-feedback.jsonl` locally.
+With `FEDE_AUTO_FEEDBACK_URL`, the script posts to the feedback relay. Add
+`FEDE_FEEDBACK_SECRET` when the relay is protected by `FEEDBACK_SHARED_SECRET`.
+With GitHub CLI auth, it creates an issue in `floomhq/fede`. Without either
+path, it stores `.fede-feedback.jsonl` locally.
 
 Never include secrets, credentials, private customer data, or confidential names
 in feedback.
 
 For a hosted relay, deploy `workers/feedback-relay.js` with a server-side
-`GITHUB_TOKEN` secret that can create issues in `floomhq/fede`.
+`GITHUB_TOKEN` secret that can create issues in `floomhq/fede`. Set
+`FEEDBACK_SHARED_SECRET` to reduce spam.
 
 ## Dedicated Secret Scanners
 

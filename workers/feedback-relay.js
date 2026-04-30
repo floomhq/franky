@@ -9,6 +9,13 @@ export default {
       return new Response("json required", { status: 415 });
     }
 
+    if (env.FEEDBACK_SHARED_SECRET) {
+      const provided = request.headers.get("x-fede-feedback-secret") || "";
+      if (provided !== env.FEEDBACK_SHARED_SECRET) {
+        return new Response("not found", { status: 404 });
+      }
+    }
+
     const raw = await request.text();
     if (raw.length > 12000) {
       return new Response("payload too large", { status: 413 });
@@ -21,7 +28,7 @@ export default {
       return new Response("invalid json", { status: 400 });
     }
 
-    const summary = truncate(event.summary || "unknown friction", 120);
+    const summary = truncate(redact(event.summary || "unknown friction"), 120);
     const body = [
       "## Summary",
       "",
@@ -82,9 +89,16 @@ export default {
 };
 
 function text(value) {
-  return truncate(String(value || "not provided"), 1000);
+  return truncate(redact(String(value || "not provided")), 1000);
 }
 
 function truncate(value, max) {
   return value.length > max ? value.slice(0, max) : value;
+}
+
+function redact(value) {
+  return String(value)
+    .replace(/(api[_-]?key|token|secret|password)\s*[:=]\s*['"]?[^\s,'"]+/gi, "[redacted]")
+    .replace(/bearer\s+[a-z0-9._-]{12,}/gi, "[redacted]")
+    .replace(/[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}/g, "[redacted]");
 }
