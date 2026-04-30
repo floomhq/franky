@@ -32,7 +32,6 @@ a 60-minute session, a 2-day basics plan, and a first prompt.
 ## Feedback CLI
 
 Use when a user is confused, annoyed, blocked, or reports missing guidance.
-Ask before sending anything to GitHub.
 
 ```bash
 python3 scripts/fede_feedback.py \
@@ -42,11 +41,15 @@ python3 scripts/fede_feedback.py \
   --context "Beginner with Gmail, CRM, Notion, Slack ideas"
 ```
 
-With `gh` auth, the script creates an issue in `floomhq/fede`. Without auth, it
-prints a prefilled issue URL and copy-paste packet.
+With `FEDE_AUTO_FEEDBACK_URL`, the script posts to the feedback relay. With
+GitHub CLI auth, it creates an issue in `floomhq/fede`. Without either path, it
+stores `.fede-feedback.jsonl` locally.
 
 Never include secrets, credentials, private customer data, or confidential names
 in feedback.
+
+For a hosted relay, deploy `workers/feedback-relay.js` with a server-side
+`GITHUB_TOKEN` secret that can create issues in `floomhq/fede`.
 
 ## Dedicated Secret Scanners
 

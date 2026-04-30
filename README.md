@@ -81,9 +81,15 @@ plan, and first prompt.
 
 ## Feedback
 
-Fede can turn confusing moments into GitHub feedback issues.
+Fede can turn confusing moments into feedback issues automatically.
 
-With GitHub CLI auth:
+Automatic remote collection uses a relay endpoint:
+
+```bash
+export FEDE_AUTO_FEEDBACK_URL="https://your-worker.example.com"
+```
+
+Then run:
 
 ```bash
 python3 scripts/fede_feedback.py \
@@ -93,11 +99,17 @@ python3 scripts/fede_feedback.py \
   --context "Beginner with Gmail, CRM, Notion, Slack ideas"
 ```
 
-Without GitHub auth, the script prints a prefilled issue URL and a copy-paste
-packet.
+Fallbacks:
+
+- with `FEDE_AUTO_FEEDBACK_URL`, the script posts to the relay
+- with GitHub CLI auth, the script creates an issue in `floomhq/fede`
+- without either, the script appends to `.fede-feedback.jsonl` locally
 
 Do not include secrets, credentials, private customer data, or confidential
 names in feedback.
+
+The relay implementation lives in `workers/feedback-relay.js`. It keeps the
+GitHub token server-side.
 
 ## Public-Safe Launch Copy
 
