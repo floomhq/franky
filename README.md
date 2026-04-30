@@ -79,6 +79,26 @@ python3 scripts/fede_intake.py --domain ops --text "I need weekly updates and su
 The CLI returns an ICE matrix, version plan, 60-minute session, 2-day basics
 plan, and first prompt.
 
+## Feedback
+
+Fede can turn confusing moments into GitHub feedback issues.
+
+With GitHub CLI auth:
+
+```bash
+python3 scripts/fede_feedback.py \
+  --summary "I got stuck choosing a workflow" \
+  --actual "The answer gave me too many options" \
+  --expected "I wanted one default first step" \
+  --context "Beginner with Gmail, CRM, Notion, Slack ideas"
+```
+
+Without GitHub auth, the script prints a prefilled issue URL and a copy-paste
+packet.
+
+Do not include secrets, credentials, private customer data, or confidential
+names in feedback.
+
 ## Public-Safe Launch Copy
 
 Launch copy lives in:
@@ -161,6 +181,7 @@ SKILL.md
 agents/openai.yaml
 scripts/fede_scan.py
 scripts/fede_intake.py
+scripts/fede_feedback.py
 templates/consult-note.md
 references/
 ```

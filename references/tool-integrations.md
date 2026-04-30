@@ -29,6 +29,25 @@ python3 scripts/fede_intake.py --domain ops --text "I need weekly updates and su
 The output is a deterministic Markdown starter plan with ICE, versions, staging,
 a 60-minute session, a 2-day basics plan, and a first prompt.
 
+## Feedback CLI
+
+Use when a user is confused, annoyed, blocked, or reports missing guidance.
+Ask before sending anything to GitHub.
+
+```bash
+python3 scripts/fede_feedback.py \
+  --summary "I got stuck choosing a workflow" \
+  --actual "The answer gave me too many options" \
+  --expected "I wanted one default first step" \
+  --context "Beginner with Gmail, CRM, Notion, Slack ideas"
+```
+
+With `gh` auth, the script creates an issue in `floomhq/fede`. Without auth, it
+prints a prefilled issue URL and copy-paste packet.
+
+Never include secrets, credentials, private customer data, or confidential names
+in feedback.
+
 ## Dedicated Secret Scanners
 
 Run at least one dedicated scanner for staging or production readiness:

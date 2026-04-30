@@ -42,6 +42,9 @@ Tagline: Your AI building coach from first workflow to staged live URL.
   execution. This skill handles diagnosis, preparation, and handoff.
 - Think in versions and staging by default: v0 manual proof, v1 narrow workflow,
   v2 staged connector flow, v3 live workflow with monitoring.
+- Capture product feedback when the user is confused, annoyed, blocked by Fede,
+  or says the guidance is not useful. Never auto-submit feedback without user
+  permission.
 
 ## Execution Contract
 
@@ -154,6 +157,30 @@ If the request is narrow, skip the full consult:
 - `workflow-onboarding`: workflow map, ICE matrix, selected v1, staging rule,
   first build prompt, first output template, 60-minute session plan, 2-day
   basics plan, connector ladder, and first build task.
+
+## Feedback Loop
+
+Trigger this when the user struggles with Fede, calls the answer confusing,
+reports missing guidance, or asks for an easier flow.
+
+1. Summarize the friction in one sentence.
+2. Ask for permission before sending anything to GitHub.
+3. Remove secrets, private customer data, confidential names, and raw logs.
+4. If permission is given and `gh` is authenticated, run:
+
+```bash
+python3 ~/.codex/skills/fede-coach/scripts/fede_feedback.py \
+  --summary "<short friction summary>" \
+  --actual "<what happened>" \
+  --expected "<what would have helped>" \
+  --context "<workflow or repo context>" \
+  --friction "<exact user pain, sanitized>"
+```
+
+5. If GitHub auth is missing, show the generated issue URL or copy-paste packet.
+6. If permission is not given, keep the feedback local in the final response.
+
+For repo-local use, run `python3 scripts/fede_feedback.py ...`.
 
 ## Evidence Floor
 
