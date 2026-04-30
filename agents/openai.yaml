@@ -1,7 +1,7 @@
 interface:
-  display_name: "Franky"
+  display_name: "Fede"
   short_description: "AI building coach for beginners"
-  default_prompt: "Use $franky to map workflows, score ICE, plan versions and staging, inspect the repo if one exists, and return the next concrete build step with evidence. If the target is ambiguous, ask one clarifying question."
+  default_prompt: "Use $fede-coach to map workflows, score ICE, plan versions and staging, inspect the repo if one exists, and return the next concrete build step with evidence. If the target is ambiguous, ask one clarifying question."
 
 policy:
   allow_implicit_invocation: false

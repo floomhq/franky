@@ -1,6 +1,6 @@
-# Franky
+# Fede
 
-Franky is a vendor-neutral AI building coach for beginners, operators, and
+Fede is a vendor-neutral AI building coach for beginners, operators, and
 builders with AI-made prototypes.
 
 It helps a user go from "I have workflow ideas" or "this works on localhost" to
@@ -9,7 +9,7 @@ staging rules, live-URL path, and evidence-based blockers.
 
 ## TL;DR
 
-Franky answers:
+Fede answers:
 
 - What do I build first?
 - Which workflow has the best impact, confidence, and effort profile?
@@ -36,9 +36,9 @@ Help me map workflows, score ICE, pick the first v1, define staging, and give me
 the first build task.
 ```
 
-## What Franky Does
+## What Fede Does
 
-Franky has two modes:
+Fede has two modes:
 
 - `workflow-onboarding`: no repo yet. It maps workflows, creates an ICE matrix,
   picks the first v1, defines version stages, and gives a first build task.
@@ -46,13 +46,25 @@ Franky has two modes:
   leaks, env gaps, secrets risk, staging gaps, deployment fit, and smoke-test
   evidence.
 
-Franky always thinks in:
+Fede always thinks in:
 
 - ICE: impact, confidence, effort
 - versions: v0 manual proof, v1 narrow workflow, v2 staged connector flow, v3
   monitored live workflow
 - staging: separate test data, sandbox accounts, preview deploys, dry-runs, and
   rollback before real users or live side effects
+
+For beginners, Fede starts like a live consult:
+
+- skip course mode unless the user asks for resources
+- pick one real workflow from the user's job
+- score the workflow list with ICE
+- build the first workflow manually before connecting Gmail, Slack, Notion, CRM,
+  or other live systems
+- return the exact first prompt, output template, and 60-minute build flow
+- give a 2-day learning-by-building plan when the user asks for basics
+- map Gmail, CRM, Notion, Slack, and call assistant ideas into a staged
+  connector ladder
 
 ## Public-Safe Launch Copy
 
@@ -76,26 +88,26 @@ Clone or copy this repository into the Codex skills directory:
 
 ```bash
 mkdir -p ~/.codex/skills
-git clone https://github.com/floomhq/franky.git ~/.codex/skills/franky
+git clone https://github.com/floomhq/fede.git ~/.codex/skills/fede-coach
 ```
 
 Then use:
 
 ```text
-Use $franky to map workflows, score ICE, plan versions and staging, inspect the
+Use $fede-coach to map workflows, score ICE, plan versions and staging, inspect the
 repo if one exists, and return the next concrete build step with evidence.
 ```
 
-Commands in `SKILL.md` assume Franky is installed at `~/.codex/skills/franky`.
+Commands in `SKILL.md` assume Fede is installed at `~/.codex/skills/fede-coach`.
 From a fresh clone, use repo-local commands such as `python3
-scripts/franky_scan.py . --json`.
+scripts/fede_scan.py . --json`.
 
 ## Scanner
 
-Franky includes a first-pass scanner:
+Fede includes a first-pass scanner:
 
 ```bash
-python3 scripts/franky_scan.py . --json
+python3 scripts/fede_scan.py . --json
 ```
 
 The scanner finds common prototype-to-live blockers:
@@ -118,7 +130,7 @@ signal.
 
 ## Field Hacks
 
-Franky includes practical hacks in `references/field-hacks.md`:
+Fede includes practical hacks in `references/field-hacks.md`:
 
 - temporary URLs with Vercel previews, Cloudflare Tunnel, ngrok, localtunnel, or
   Tailscale Funnel
@@ -134,7 +146,7 @@ Franky includes practical hacks in `references/field-hacks.md`:
 ```text
 SKILL.md
 agents/openai.yaml
-scripts/franky_scan.py
+scripts/fede_scan.py
 templates/consult-note.md
 references/
 ```

@@ -1,4 +1,4 @@
-# Franky Public Launch Copy
+# Fede Public Launch Copy
 
 Verified source facts:
 
@@ -12,14 +12,14 @@ Evidence ledger: `references/evidence-ledger.md`
 
 ## Positioning
 
-Name: Franky
+Name: Fede
 
 Tagline: Your AI building coach from first workflow to staged live URL.
 
 One-liner:
 
 ```text
-Franky helps beginners and AI builders map workflows, pick the first build with
+Fede helps beginners and AI builders map workflows, pick the first build with
 ICE, stage risky connectors safely, and get from local prototype to a shareable
 URL with evidence.
 ```
@@ -50,9 +50,9 @@ The same pattern kept showing up:
 3. The next step becomes prioritization, env vars, secrets, auth callbacks,
    deploy targets, staging, smoke tests, and rollback.
 
-So I made Franky.
+So I made Fede.
 
-Franky is a free AI building coach.
+Fede is a free AI building coach.
 
 It helps you map workflows, score ICE, pick the first v1, stage risky
 connectors, and get from local prototype to a shareable URL.
@@ -71,19 +71,19 @@ Just workflows, versions, staging, blockers, and the next command.
 ## Short X Draft
 
 ```text
-I made Franky: a free AI building coach for people who just started coding with
+I made Fede: a free AI building coach for people who just started coding with
 AI.
 
 Send a workflow list or localhost repo.
 
-Franky maps the workflows, scores ICE, picks v1, defines staging, and gives you
+Fede maps the workflows, scores ICE, picks v1, defines staging, and gives you
 the fastest sane path to a shareable URL.
 ```
 
 ## DM Draft
 
 ```text
-Hey, quick one. I am testing Franky, a free AI building coach for people who
+Hey, quick one. I am testing Fede, a free AI building coach for people who
 started building with Cursor/Claude/Codex/Replit/Lovable/Bolt.
 
 Send a workflow list or repo.
@@ -94,7 +94,7 @@ fastest sane path to something another person can use.
 ## Landing Hero Draft
 
 ```text
-Franky
+Fede
 
 Your AI building coach from first workflow to staged live URL.
 

@@ -5,12 +5,12 @@ Load this file when scanner or check execution details are needed.
 ## First-Pass Scanner
 
 ```bash
-python3 ~/.codex/skills/franky/scripts/franky_scan.py .
-python3 ~/.codex/skills/franky/scripts/franky_scan.py . --json
+python3 ~/.codex/skills/fede-coach/scripts/fede_scan.py .
+python3 ~/.codex/skills/fede-coach/scripts/fede_scan.py . --json
 ```
 
-These commands assume Franky is installed at `~/.codex/skills/franky`. From a
-fresh repo clone, use `python3 scripts/franky_scan.py . --json`.
+These commands assume Fede is installed at `~/.codex/skills/fede-coach`. From a
+fresh repo clone, use `python3 scripts/fede_scan.py . --json`.
 
 The first-pass scanner detects stack metadata, localhost references, secret-like
 keywords, git status, and scanner tool availability. It redacts matched values
@@ -28,7 +28,7 @@ trufflehog filesystem --no-update .
 Or run available scanners through the bundled first-pass scanner:
 
 ```bash
-python3 ~/.codex/skills/franky/scripts/franky_scan.py . --run-scanners --json
+python3 ~/.codex/skills/fede-coach/scripts/fede_scan.py . --run-scanners --json
 ```
 
 If scanners are missing:

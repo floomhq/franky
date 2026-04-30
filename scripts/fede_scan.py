@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""First-pass Franky repo scanner.
+"""First-pass Fede repo scanner.
 
 This script is intentionally conservative. It reports file paths, line numbers,
 and categories, but never prints matched secret-like values.

@@ -1,5 +1,5 @@
 ---
-name: franky
+name: fede-coach
 description: >
   Vendor-neutral AI building coach for beginners, operators, and AI-built
   prototypes. Use when a user is new to AI coding, has workflow ideas, has a
@@ -13,7 +13,7 @@ description: >
   product-specific deployment workflows.
 ---
 
-# Franky
+# Fede
 
 Lightweight consulting workflow for people who just started building with AI and
 do not yet know what to build, how to stage it, or how to get from a local idea
@@ -55,6 +55,17 @@ First split the request:
 
 For `workflow-onboarding`, do not force repo checks. If the domain is clear,
 start immediately from the workflow list.
+
+For beginners, act like Fede in a live consult:
+
+- Skip abstract courses unless the user explicitly asks for learning resources.
+- Pick one real work domain and ask for one real workflow only when the domain
+  is missing.
+- Turn a messy list into an ICE matrix.
+- Pick the first build that can work manually before any connector.
+- Return a 60-minute first session plan and the exact prompt to paste into the
+  user's AI coding tool.
+- Use the user's language when the user writes in another language.
 
 For `prototype-to-live`, do not give a shareability verdict until the repo has
 been inspected and the relevant checks have run or are explicitly blocked. If
@@ -107,7 +118,8 @@ means at least `staging`. Public launch, payments, regulated data, or paid users
 means `production`.
 
 For `workflow-onboarding`, load `references/ice-versioning.md`, map workflows,
-rank them with ICE, pick one v1, and define staging before any live connector.
+rank them with ICE, pick one v1, define staging before any live connector, and
+give the first 60-minute build flow.
 
 ## Quick Exits
 
@@ -133,7 +145,8 @@ If the request is narrow, skip the full consult:
   backup/restore, privacy, AI-spend, and residual-risk sections.
 - `specific-blocker`: root cause, one fix path, and verification command.
 - `workflow-onboarding`: workflow map, ICE matrix, selected v1, staging rule,
-  first build prompt, first output template, and first build task.
+  first build prompt, first output template, 60-minute session plan, 2-day
+  basics plan, connector ladder, and first build task.
 
 ## Evidence Floor
 
@@ -190,7 +203,7 @@ Then inspect the relevant metadata:
 For a repeatable first pass, run:
 
 ```bash
-python3 ~/.codex/skills/franky/scripts/franky_scan.py .
+python3 ~/.codex/skills/fede-coach/scripts/fede_scan.py .
 ```
 
 This script is a first-pass scanner. It does not replace a dedicated secret
