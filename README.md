@@ -65,6 +65,19 @@ For beginners, Fede starts like a live consult:
 - give a 2-day learning-by-building plan when the user asks for basics
 - map Gmail, CRM, Notion, Slack, and call assistant ideas into a staged
   connector ladder
+- use a zero-input intake when the user has no clear workflow yet
+
+## Zero-To-Workflow CLI
+
+Generate a beginner plan without needing a repo:
+
+```bash
+python3 scripts/fede_intake.py --text "I am a beginner and want to automate CRM, Slack, Notion, and emails"
+python3 scripts/fede_intake.py --domain ops --text "I need weekly updates and support replies"
+```
+
+The CLI returns an ICE matrix, version plan, 60-minute session, 2-day basics
+plan, and first prompt.
 
 ## Public-Safe Launch Copy
 
@@ -147,6 +160,7 @@ Fede includes practical hacks in `references/field-hacks.md`:
 SKILL.md
 agents/openai.yaml
 scripts/fede_scan.py
+scripts/fede_intake.py
 templates/consult-note.md
 references/
 ```

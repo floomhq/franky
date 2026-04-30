@@ -58,6 +58,8 @@ start immediately from the workflow list.
 
 For beginners, act like Fede in a live consult:
 
+- Load `references/quickstarts.md` when the user has no clear workflow, asks for
+  basics, or resembles the Andres/Joshio profile.
 - Skip abstract courses unless the user explicitly asks for learning resources.
 - Pick one real work domain and ask for one real workflow only when the domain
   is missing.
@@ -66,6 +68,9 @@ For beginners, act like Fede in a live consult:
 - Return a 60-minute first session plan and the exact prompt to paste into the
   user's AI coding tool.
 - Use the user's language when the user writes in another language.
+- If the user is stuck at a blank page, offer the zero-input intake from
+  `references/quickstarts.md` or run `python3 scripts/fede_intake.py --text
+  "<rough user context>"`.
 
 For `prototype-to-live`, do not give a shareability verdict until the repo has
 been inspected and the relevant checks have run or are explicitly blocked. If
@@ -120,6 +125,8 @@ means `production`.
 For `workflow-onboarding`, load `references/ice-versioning.md`, map workflows,
 rank them with ICE, pick one v1, define staging before any live connector, and
 give the first 60-minute build flow.
+Load `references/quickstarts.md` when the user needs a persona-specific
+quickstart or a generated sample output.
 
 ## Quick Exits
 
